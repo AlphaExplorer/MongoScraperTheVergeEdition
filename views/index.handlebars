@@ -1,0 +1,91 @@
+
+  <!-- NAVIGATION BAR START --->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!-- Nav Brand -->
+    <a class="navbar-brand" href="/">Mongo Scraper</a>
+
+    <!-- Mobile Nav Bar Toggler -->
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Desktop Nav Bar -->
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <!-- Home Link -->
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <!-- Saved Artile Link -->
+        <li class="nav-item">
+          <a class="nav-link" href="/saved">Saved Articles</a>
+        </li>
+        <!-- Scrape New Articles Button -->
+        <li class="nav-item">
+          <a href="/scrape" class="btn btn-danger scrape-new" method= "get">SCRAPE NEW ARTICLES!</a>
+        </li>
+        <!-- Clear Scraped Atricles Button -->
+        <li class="nav-item">
+          <a href="/clearAll" class="btn btn-danger clear">CLEAR ARTICLES!</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+<!-- NAVIGATION BAR END -->
+
+<!-- JUMBOTRON START --->
+<div class="jumbotron text-center">
+  <div class="overlay">
+  </div>
+  <div class="background-image">
+  </div>
+  <div class="caption">
+    <h1>Francisco's Mongo Scraper</h1>
+    <p>The Verge Edition</p>
+  </div>
+</div>
+<!-- JUMBOTRON END -->
+
+<!-- ARTICLE CONTAINER START -->
+<div class="container-fluid article-container">
+  {{!-- {{#if articles}}
+    <div class='alert alert-warning text-center'>
+      <h4>Uh Oh. Looks like we don't have any new articles.</h4>
+    </div>
+    <div class="card">
+      <div class="card-header text-center">
+        <h3>What Would You Like To Do?</h3>
+      </div>
+      <div class="card-body text-center">
+        <h4><a href="javascript:void(0)" class="scrape-new">Try Scraping New Articles</a></h4>
+        <h4><a href="javascript:void(0)" href="/saved">Go to Saved Articles</a></h4>
+      </div>
+    </div>
+  {{else}} --}}
+    {{#each article}}
+      <div class="card" data-id="{{this._id}}">
+        <div class="card-header">
+          <h3>
+            <a class="article-link" target="_blank" rel="noopener noreferrer" href="{{this.link}}">{{this.title}}</a>
+            <a class="btn btn-success save">Save Article</a>
+          </h3>
+        </div>
+      </div>
+    {{/each}}
+  {{!-- {{/if}} --}}
+</div>
+<!-- ARTICLE CONTAINER END --->
+
+<!-- FOOTER START -->
+<footer class="footer">
+  <div class="container">
+    <p>The Verge Mongo Scraper</p>
+  </div>
+</footer>
+<!-- FOOTER END -->
+
+
+

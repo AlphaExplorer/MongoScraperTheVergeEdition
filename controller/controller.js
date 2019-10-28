@@ -6,8 +6,8 @@ var request = require("request");
 var cheerio = require("cheerio");
 const axios = require("axios")
 
-var Comment = require("../models/Comment.js.js");
-var Article = require("../models/Article.js.js");
+var Comment = require("../models/Comment.js");
+var Article = require("../models/Article.js");
 
 router.get("/", function(req, res) {
   res.redirect("/articles");

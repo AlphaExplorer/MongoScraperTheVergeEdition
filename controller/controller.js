@@ -4,9 +4,10 @@ var path = require("path");
 
 var request = require("request");
 var cheerio = require("cheerio");
+const axios = require("axios")
 
-var Comment = require("../models/Comment.js");
-var Article = require("../models/Article.js");
+var Comment = require("../models/Comment.js.js");
+var Article = require("../models/Article.js.js");
 
 router.get("/", function(req, res) {
   res.redirect("/articles");
@@ -26,18 +27,20 @@ router.get("/articles", function(req, res) {
 });
 
 router.get("/scrape", function(req, res) {
-  request("http://www.theverge.com", function(error, response, html) {
-    var $ = cheerio.load(html);
+  axios("http://www.theverge.com").then (html => {
+    var $ = cheerio.load(html.data);
+    console.log(html)
     var titlesArray = [];
     $(".c-entry-box--compact__title").each(function(i, element) {
       var result = {};
-
+      // console.log(element)
       result.title = $(this)
         .children("a")
         .text();
       result.link = $(this)
         .children("a")
         .attr("href");
+      // console.log(result)
 
       if (result.title !== "" && result.link !== "") {
         if (titlesArray.indexOf(result.title) == -1) {
